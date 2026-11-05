@@ -27,35 +27,38 @@ function showAlert(message, type = 'success') {
 // 2. Fetch API GET: Mengambil Data Mahasiswa dari Server
 async function loadMahasiswa(keyword = '') {
 
-    // tampilkan indikator loading
-    tableBody.innerHTML = `
-    <tr>
-                <td colspan="8" style="text-align:center; padding:
-        20px; color: var(--text-muted);">
-            Memuat data dari server...
-        </td>
-    </tr>
-`;
-    try {
+    // Tampilkan indikator loading
+    tabelBody.innerHTML = `
+        <tr>
+            <td colspan="8" style="text-align:center; padding:20px; color:var(--text-muted);">
+                Memuat data dari server...
+            </td>
+        </tr>
+    `;
 
-        //Percobaan 6-1 Langkah 4 susun url request
-        const url = keyword ? 
-        `${API_URL}?search=${encodeURIComponent(keyword)}` : API_URL;
-        //Percobaan 6-1 Langkah 4 kirim request
+    try {
+        const url = keyword
+            ? `${API_URL}?search=${encodeURIComponent(keyword)}`
+            : API_URL;
+
         const response = await fetch(url);
-            if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-        //Percobaan 6-1 Langkah 4 kirim ekstrak json 
-            const result = await response.json();
-                if (result.status === 'success') {
-                    renderTable(result.data, keyword);
-                } else {
-                    showAlert(result.message, 'danger');
-                }
-      
+
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            renderTable(result.data, keyword);
+        } else {
+            showAlert(result.message, 'danger');
+        }
+
     } catch (error) {
         tabelBody.innerHTML = `
             <tr>
-                <td colspan="8" style="text-align: center; padding: 20px; color: #ef4444;">
+                <td colspan="8" style="text-align:center; padding:20px; color:#ef4444;">
                     Gagal memuat data dari REST API: ${error.message}
                 </td>
             </tr>
@@ -126,7 +129,7 @@ async function openEditModal(id) {
                        
             // Percobaan 6-3 Langkah 3
             editId.value = result.data.id;
-            editNpm.value = result.data.npm;
+            editnpm.value = result.data.npm;
             editNama.value = result.data.nama;
             editProdi.value = result.data.program_studi;
             editAngkatan.value = result.data.angkatan;

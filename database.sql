@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS mahasiswa (
 
 -- Data Awal (Seeding)
 INSERT INTO mahasiswa (npm, nama, program_studi, angkatan, email) VALUES
-('230101001', 'Ahmad Fauzi', 'Teknik Informatika', 2023, 'ahmad.fauzi@example.com'),
+('230101002', 'Ahmad Fauzi', 'Teknik Informatika', 2023, 'ahmad.fauzi@example.com'),
 ('230101002', 'Siti Nurhaliza', 'Sistem Informasi', 2023, 'siti.nurhaliza@example.com'),
 ('240101015', 'Budi Santoso', 'Teknologi Informasi', 2024, 'budi.santoso@example.com'),
 ('240101020', 'Dewi Lestari', 'Rekayasa Perangkat Lunak', 2024, 'dewi.lestari@example.com')
